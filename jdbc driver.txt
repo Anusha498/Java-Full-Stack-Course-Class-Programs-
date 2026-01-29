@@ -1,0 +1,22 @@
+package myjdbcproj1;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+public class Main {
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		System.out.println("MySQL Driver is Loaded Successfully");
+		String url = "jdbc:mysql://localhost:3306/mydb";
+		String username = "root";
+		String password = "root1234";
+		Connection conn = DriverManager.getConnection(url,username,password);
+		PreparedStatement ps = conn.prepareStatement("insert into student values(104,'react','hari@zohomail.in','hari')");
+		int cnt = ps.executeUpdate();
+		if(cnt>0) {
+			System.out.println("One Record inserted successfully");
+		}else {
+			System.out.println("Data insertion Failed");
+		}
+	}
+}
